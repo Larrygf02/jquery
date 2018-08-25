@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Tabla seleccionada</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		var total=0;
+ 
+//selector >>  $("#GridView1 tr").find('td:eq(1)')
+//De esta manera utilizando eq seleccionamos la segunda fila, ya que la primera es 0
+$("#miTabla tr").find('td:eq(1)').each(function () {
+ 
+ //obtenemos el valor de la celda
+  valor = $(this).html();
+ 
+ //sumamos, recordar parsear, si no se concatenara.
+ total += parseInt(valor)
+})
+ 
+//mostramos el total
+alert(total)
+	</script>
+	<style>
+table, th, td {
+    border: 1px solid black;
+}
+
+</style>
+</head>
+<body>
+	<table id="miTabla">
+    <tr>
+        <td>pato</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>pato</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>pato</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>pato</td>
+        <td>16</td>
+    </tr>
+<table>
+</body>
+</html>

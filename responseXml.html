@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2>My Coleccion de CD</h2>
+	<button onclick="loadDoc()">Conseguir mi coleccion de CD</button>
+	<p id="demo"></p>
+	<script type="text/javascript">
+	 function loadDoc(){
+	 	var xhttp,xmlDoc,txt,x,i;
+	 	xhttp = new XMLHttpRequest();
+	 	xhttp.onreadystatechange = function(){
+	 		if(xhttp.readyState == 4 && xhttp.status == 200){
+	 			xmlDoc = xhttp.responseXML;
+	 			txt = "";
+	 			x = xmlDoc.getElementsByTagName("ARTIST");
+	 			for (i = 0; i < x.length; i++) {
+	 				txt = txt + x[i].childNodes[0].nodeValue + "<br>";	
+	 			}
+	 			document.getElementById("demo").innerHTML= txt;
+	 		}
+	 	};
+	 	xhttp.open("GET","cd_catalog.xml",true);
+	 	xhttp.send();
+	 }
+	</script>
+</body>
+</html>

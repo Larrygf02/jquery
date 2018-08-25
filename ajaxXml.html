@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2>Recibiendo datos Xml</h2>
+	<p><b>Status:</b><span id="A1"></span></p>
+	<p><b>Status Text:</b><span id="A2"></span></p>
+	<p><b>Response:</b><span id="A3"></span></p>
+	<p><b>Ultima modificacion:</b><span id="A4"></span></p>
+	<button onclick="loadDoc('note.xml')">Conseguir XML</button>
+	<script type="text/javascript">
+		function loadDoc(url){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if(xhttp.readyState == 4 && xhttp.status == 200){
+					document.getElementById("A1").innerHTML = xhttp.status;
+					document.getElementById("A2").innerHTML = xhttp.statusText;
+					document.getElementById("A3").innerHTML = xhttp.responseText;
+					document.getElementById("A4").innerHTML = xhttp.getResponseHeader('Last-Modified');
+				}
+			};
+			xhttp.open("GET",url,true);
+			xhttp.send();
+		}
+	</script>
+</body>
+</html>
